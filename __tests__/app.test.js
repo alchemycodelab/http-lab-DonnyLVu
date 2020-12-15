@@ -9,15 +9,32 @@ describe('app routes', () => {
     expect(res.text).toEqual('hi');
   });
 
-  it('post status code 200 and plain text with the request body', async () => {
+  it('should post', async () => {
     const res = await request(app)
       .post('/echo')
       .send('hi');
 
-    expect(res.text).toEqual({
-      body: 'hi',
-      status: '200 ok',
-      contentType: 'text/plain'
-    });
+    expect(res.text).toEqual('hi');
+  });
+
+  it('should get red', async () => {
+    const res = await request(app)
+      .get('/red');
+
+    expect(res.text).toEqual('<h1>red</h1>');
+  });
+
+  it('should get green', async () => {
+    const res = await request(app)
+      .get('/green');
+
+    expect(res.text).toEqual('<h1>green</h1>');
+  });
+
+  it('should get blue', async () => {
+    const res = await request(app)
+      .get('/blue');
+
+    expect(res.text).toEqual('<h1>blue</h1>');
   });
 });
