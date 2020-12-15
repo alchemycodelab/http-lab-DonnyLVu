@@ -37,4 +37,11 @@ describe('app routes', () => {
 
     expect(res.text).toEqual('<h1>blue</h1>');
   });
+
+  it('should get an error', async () => {
+    const res = await request(app)
+      .get('/errorMcGee');
+
+    expect(res.text).toEqual('Not Found');
+  });
 });
